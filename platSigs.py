@@ -41,7 +41,7 @@ def findRSAFiles(workingDir):
 def getSignatures(certFiles):
     signatures = list()
     for file in range(len(certFiles)):
-        signatures.append(getSig(certFiles[file - 1]))
+        signatures.append(getSig(certFiles[file]))
     return signatures
 
 def findJavaBinaries(vendorRootPath):
@@ -58,10 +58,10 @@ def processJavaBinaries(javaBinaries):
     if not os.path.isdir(tmpDir):
         os.mkdir(tmpDir)
     for file in range(len(javaBinaries)):
-        name, ext = os.path.splitext(javaBinaries[1][file - 1])
+        name, ext = os.path.splitext(javaBinaries[1][file])
         if not os.path.isdir(tmpDir + name):
             os.mkdir(tmpDir + name)
-            zip_ref = zipfile.ZipFile((javaBinaries[0][file - 1] + "/" + javaBinaries[1][file - 1]), 'r')
+            zip_ref = zipfile.ZipFile((javaBinaries[0][file] + "/" + javaBinaries[1][file]), 'r')
             zip_ref.extractall(tmpDir + name)
             zip_ref.close()
 
