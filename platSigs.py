@@ -69,8 +69,12 @@ def removeDuplicates(signatures):
   return list(dict.fromkeys(signatures))
 
 def printSignatures(signatures):
+    print "    <!-- The list of vendor package signatures that should also be considered"
+    print "         platform signatures, specifically for use on devices with a vendor partition. -->"
+    print "    <string-array name=\"config_vendorPlatformSignatures\" translatable=\"false\">"
     for sig in range(len(signatures)):
-        print "Signature " + str(sig + 1) + ": " + signatures[sig - 1] + "\n"
+        print "        <item>" + signatures[sig] + "</item>"
+    print "    </string-array>"
 
 if len(sys.argv) != 2:
 	sys.exit("usage: " + sys.argv[0] + " /path/to/vendor/root")
