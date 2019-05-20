@@ -16,11 +16,12 @@
 #
 
 import base64
+import random
 import sys
 import os
 import zipfile
 
-tmpDir = "/tmp/platCerts/"
+tmpDir = "/tmp/platCerts-" + str(random.getrandbits(14)) + "/"
 
 def getSig(certFileName):
     certFile = open(certFileName, "r")
